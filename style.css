@@ -1,0 +1,195 @@
+body{
+  margin:0;
+  background:black;
+  color:#0ff;
+  font-family:monospace;
+  overflow:hidden;
+}
+
+#boot{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:100;
+  font-size:26px;
+  letter-spacing:3px;
+  text-shadow:0 0 30px #0ff, 0 0 50px magenta;
+}
+
+#radar{
+  width:140px;
+  height:140px;
+  border:2px solid #0ff;
+  border-radius:50%;
+  box-shadow:0 0 60px #0ff, 0 0 100px magenta;
+  margin:18px 0;
+  position:relative;
+  overflow:hidden;
+}
+
+#radar::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:conic-gradient(rgba(0,255,255,0.4), transparent 120deg);
+  animation:spin 2s linear infinite;
+}
+
+@keyframes spin{100%{transform:rotate(360deg)}}
+
+#bootBar{
+  width:65%;
+  height:6px;
+  border:1px solid #0ff;
+  border-radius:10px;
+  margin-top:20px;
+  overflow:hidden;
+  box-shadow:0 0 20px #0ff;
+}
+
+#bootFill{
+  width:0;
+  height:100%;
+  background:#0ff;
+  animation:load 3.2s forwards;
+}
+
+@keyframes load{100%{width:100%}}
+
+#ui{
+  display:none;
+  width:96%;
+  max-width:460px;
+  height:86vh;
+  margin:auto;
+  margin-top:6vh;
+  border:1px solid #0ff;
+  border-radius:14px;
+  box-shadow:0 0 120px #0ff, 0 0 200px magenta;
+  background:rgba(0,12,30,0.6);
+  padding:12px;
+  position:relative;
+  z-index:10;
+}
+
+#controlPanel{
+  display:flex;
+  justify-content:space-around;
+  font-size:13px;
+  margin:10px 0;
+  padding:6px;
+  border:1px solid #0ff;
+  border-radius:8px;
+  background:rgba(0,255,255,0.05);
+  box-shadow:0 0 15px #0ff;
+}
+
+#messages{
+  height:48vh;
+  overflow-y:auto;
+  padding:8px;
+  border:1px solid #0ff;
+  border-radius:8px;
+  background:rgba(0,255,255,0.02);
+  box-shadow:inset 0 0 20px #0ff1;
+}
+
+.msg{
+  padding:12px;
+  margin:6px 0;
+  border-radius:6px;
+  border:1px solid;
+  font-size:15px;
+  transition:0.2s;
+}
+
+.user{
+  border-color:#0ff;
+  background:rgba(0,255,255,0.08);
+  text-align:right;
+  color:#0ff;
+  box-shadow:0 0 12px #0ff;
+}
+
+.nova{
+  border-color:magenta;
+  background:rgba(255,0,255,0.25);
+  text-align:left;
+  color:white;
+  box-shadow:0 0 22px magenta;
+  animation:glitch 0.32s;
+}
+
+@keyframes glitch{
+  0%{transform:translateX(6px) skewX(6deg);opacity:0.7}
+  50%{transform:translateX(-4px) skewX(-2deg);opacity:1}
+  100%{transform:none}
+}
+
+#inputArea{display:flex;gap:6px;margin-top:6px}
+
+input{
+  flex:1;
+  padding:14px;
+  background:#000a;
+  border:1px solid #0ff;
+  border-radius:6px;
+  color:#0ff;
+  font-size:15px;
+  outline:none;
+  box-shadow:0 0 12px #0ff;
+}
+
+#sendBtn{
+  background:#0ff;
+  color:black;
+  font-weight:bold;
+  border-radius:6px;
+  padding:12px 18px;
+  box-shadow:0 0 18px #0ff;
+  cursor:pointer;
+}
+
+#voiceBtn{
+  background:magenta;
+  border-radius:50%;
+  width:44px;
+  height:44px;
+  border:none;
+  box-shadow:0 0 35px magenta, 0 0 70px #0ff;
+  cursor:pointer;
+}
+
+#creator{
+  text-align:center;
+  font-size:12px;
+  margin-top:8px;
+  color:magenta;
+  text-shadow:0 0 8px magenta;
+}
+
+canvas{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+
+#scanlines{
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(
+    transparent 0px,
+    rgba(0,255,255,0.03) 2px,
+    transparent 4px
+  );
+  pointer-events:none;
+  z-index:5;
+  animation:move 6s linear infinite;
+}
+
+@keyframes move{100%{background-position:0 600px}}
